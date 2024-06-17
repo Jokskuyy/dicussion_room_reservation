@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2E8B57;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #006400;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #006400;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+header button:hover {
+    background-color: #dcdcdc;
+}
+
+main {
+    padding: 20px;
+}
+
+#about {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2em;
+}
+
+#about p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}

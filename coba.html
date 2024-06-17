@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #339966;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        header h1 {
+            margin: 0;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 15px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        nav ul li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 1px;
+            background-color: white;
+        }
+
+        .hero {
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #f90;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .content {
+            padding: 2rem 0;
+        }
+
+        .help-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .left, .right {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .left h2 {
+            margin-top: 0;
+        }
+
+        .left p {
+            font-size: 1rem;
+        }
+
+        .left img, .right img {
+            width: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .right {
+            text-align: left;
+        }
+
+        .map {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .map img {
+            max-width: 100%;
+            height: auto;
+            width: 80%; /* Memastikan gambar map memenuhi lebar parent */
+            max-height: 300px; /* Atur tinggi maksimal sesuai kebutuhan */
+        }
+
+        .address p {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            background: #339966;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: modalopen 0.5s;
+        }
+
+        @keyframes modalopen {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background: #339966;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background: #28794d;
+        }
+
+        .register-link {
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#help">Help</a></li>
+                    <li><a id="loginBtn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h2>Your One-Stop Solution</h2>
+                <p>We provide the best services to meet your needs.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We are a team of professionals dedicated to delivering top-quality products and services.</p>
+            </div>
+        </section>
+        <section class="content" id="help">
+            <div class="container">
+                <div class="help-content">
+                    <div class="left">
+                        <h2>Ruang Diskusi</h2>
+                        <p>UPT Perpustakaan UPN Veteran Jakarta merupakan Unit Pelaksanaan Teknis di bidang perpustakaan yang mempunyai tugas melaksanakan pemberian layanan kepustakaan.</p>
+                        <div class="social-media">
+                            <img src="instagram.jpg" alt="Instagram">
+                            <img src="facebook.jpg" alt="Facebook">
+                            <img src="youtube.jpg" alt="YouTube">
+                        </div>
+                        <div class="contact-info">
+                            <h3>Narahubung</h3>
+                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="map">
+                            <h2>Lokasi</h2>
+                            <img src="lokasi.jpg" alt="Google Map">
+                        </div>
+                        <div class="address">
+                            <h3>Alamat</h3>
+                            <p><img src="logolokasi.jpg" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
+                            <p><img src="telepon.jpg" alt="Phone"> 021 - 75902835</p>
+                            <p><img src="email.jpg" alt="Email"> library@upnvj.ac.id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username (NIM / Email):</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <p>Don't have an account? <a class="register-link" id="registerBtn">Register</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegister">&times;</span>
+            <h2>Register</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="nim">NIM:</label>
+                    <input type="text" id="nim" name="nim" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" name="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password:</label>
+                    <input type="password" id="regPassword" name="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the modals
+        var loginModal = document.getElementById('loginModal');
+        var registerModal = document.getElementById('registerModal');
+
+        // Get the buttons that open the modals
+        var loginBtn = document.getElementById('loginBtn');
+        var registerBtn = document.getElementById('registerBtn');
+
+        // Get the <span> elements that close the modals
+        var closeLogin = document.getElementById('closeLogin');
+        var closeRegister = document.getElementById('closeRegister');
+
+        // When the user clicks the button, open the modal
+        loginBtn.onclick = function() {
+            loginModal.style.display = 'block';
+        }
+
+        registerBtn.onclick = function() {
+            registerModal.style.display = 'block';
+            loginModal.style.display = 'none';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeLogin.onclick = function() {
+            loginModal.style.display = 'none';
+        }
+
+        closeRegister.onclick = function() {
+            registerModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (event.target == registerModal) {
+                registerModal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
