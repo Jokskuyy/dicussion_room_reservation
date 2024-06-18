@@ -266,6 +266,24 @@
             color: blue;
             cursor: pointer;
         }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1; /* Agar teks tetap di atas overlay */
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem; /* Atur ukuran font sesuai keinginan */
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Efek bayangan teks */
+            cursor: pointer; /* Ubah kursor saat hover */
+        }
+
     </style>
 </head>
 <body>
@@ -283,7 +301,10 @@
     <main>
         <section class="hero" id="home">
             <div class="full-width-image">
-                <img src="contoh.jpg" alt="contoh">
+                <img src="img/contoh.jpg" alt="contoh">
+                <div class="hero-text">
+                    <h2>Reservasi Sekarang >>></h2>
+                </div>
             </div>
         </section>
         <section class="content" id="help">
@@ -293,27 +314,27 @@
                         <h2>Ruang Diskusi</h2>
                         <p>UPT Perpustakaan UPN Veteran Jakarta merupakan Unit Pelaksanaan Teknis di bidang perpustakaan yang mempunyai tugas melaksanakan pemberian layanan kepustakaan.</p>
                         <div class="social-media">
-                            <img src="instagram.jpg" alt="Instagram">
-                            <img src="facebook.jpg" alt="Facebook">
-                            <img src="youtube.jpg" alt="YouTube">
+                            <img src="img/instagram.jpg" alt="Instagram">
+                            <img src="img/facebook.jpg" alt="Facebook">
+                            <img src="img/youtube.jpg" alt="YouTube">
                         </div>
                         <div class="contact-info">
                             <h3>Narahubung</h3>
-                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
-                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
-                            <p><img src="whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                            <p><img src="img/whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                            <p><img src="img/whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
+                            <p><img src="img/whatsapp.jpg" alt="WhatsApp"> 08XXXXXXXXXX</p>
                         </div>
                     </div>
                     <div class="right">
                         <div class="map">
                             <h2>Lokasi</h2>
-                            <img src="lokasi.jpg" alt="Google Map">
+                            <img src="img/lokasi.jpg" alt="Google Map">
                         </div>
                         <div class="address">
                             <h3>Alamat</h3>
-                            <p><img src="logolokasi.jpg" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
-                            <p><img src="telepon.jpg" alt="Phone"> 021 - 75902835</p>
-                            <p><img src="email.jpg" alt="Email"> library@upnvj.ac.id</p>
+                            <p><img src="img/logolokasi.jpg" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
+                            <p><img src="img/telepon.jpg" alt="Phone"> 021 - 75902835</p>
+                            <p><img src="img/email.jpg" alt="Email"> library@upnvj.ac.id</p>
                         </div>
                     </div>
                 </div>
@@ -382,6 +403,13 @@
     </div>
 
     <script>
+        // Get the element containing "Reservasi Sekarang"
+        var reservasiSekarang = document.querySelector('.hero-text h2');
+
+        // Add click event to open login modal
+        reservasiSekarang.onclick = function() {
+            loginModal.style.display = 'block';
+        }
         // Get the modals
         var loginModal = document.getElementById('loginModal');
         var registerModal = document.getElementById('registerModal');
