@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+            background-color: #f0f0f0; /* Warna latar belakang normal */
         }
 
         .container {
@@ -22,6 +23,18 @@
             background: #339966;
             color: white;
             padding: 1rem 0;
+        }
+
+        .full-width-image {
+            width: 100%;
+            text-align: center; /* Untuk memastikan gambar berada di tengah */
+        }
+
+        .full-width-image img {
+            width: 100%; /* Gambar akan mengambil lebar maksimal dari parentnya */
+            height: auto; /* Memastikan proporsi gambar tetap terjaga */
+            display: block; /* Memastikan gambar tetap di tengah vertikal jika dibutuhkan */
+            max-width: 100%; /* Mencegah gambar melampaui lebar aslinya */
         }
 
         header h1 {
@@ -62,32 +75,6 @@
             height: 20px;
             width: 1px;
             background-color: white;
-        }
-
-        .hero {
-            background: url('hero-image.jpg') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .hero h2 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background: #f90;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
         }
 
         .content {
@@ -161,6 +148,16 @@
             margin: 0.5rem 0;
         }
 
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set minimum tinggi body sebesar tinggi layar (viewport) */
+        }
+
+        main {
+            flex: 1; /* Membuat main mengisi ruang yang tersedia */
+        }
+
         footer {
             background: #339966;
             color: white;
@@ -200,6 +197,27 @@
         @keyframes modalopen {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero {
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #339966;
+            opacity: 0.5; /* Opacity 50% */
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .close {
@@ -264,16 +282,8 @@
     </header>
     <main>
         <section class="hero" id="home">
-            <div class="container">
-                <h2>Your One-Stop Solution</h2>
-                <p>We provide the best services to meet your needs.</p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-        </section>
-        <section class="content">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>We are a team of professionals dedicated to delivering top-quality products and services.</p>
+            <div class="full-width-image">
+                <img src="contoh.jpg" alt="contoh">
             </div>
         </section>
         <section class="content" id="help">
@@ -315,9 +325,6 @@
             <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
         </div>
     </footer>
-
-
-
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
