@@ -26,7 +26,7 @@ CREATE TABLE slot (
 
 CREATE TABLE reservasi (
     id_reservasi INT PRIMARY KEY,
-    nim INT,
+    nim VARCHAR(10),
     id_ruangan INT,
     id_slot INT,
     tanggal DATE,
