@@ -32,199 +32,274 @@ $currentDate = $currentDateRow['tanggal'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruang 1 Detail</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-           body {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
         }
         header {
-        background: #339966;
-        color: white;
-        padding: 1rem 1; /* Mengurangi padding untuk membuatnya lebih tipis */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+            background: #339966;
+            color: white;
+            padding: 1rem 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    header .left-nav {
-        display: flex;
-        align-items: center;
-    }
+        header .left-nav {
+            display: flex;
+            align-items: center;
+        }
 
-    header .left-nav img {
-        height: 40px; /* Mengurangi ukuran logo */
-        margin-right: 10px;
-    }
+        header .left-nav img {
+            height: 40px;
+            margin-right: 10px;
+        }
 
-    header .left-nav .text-container {
-        display: flex;
-        flex-direction: column;
-        margin-right: 20px; /* Adjust space between text and navigation */
-    }
+        header .left-nav .text-container {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
 
-    header .left-nav .text-container span:first-child {
-        font-weight: bold;
-    }
+        header .left-nav .text-container span:first-child {
+            font-weight: bold;
+        }
 
-    header .left-nav .text-container span:last-child {
-        font-weight: bold;
-        font-size: 0.8em;
-    }
+        header .left-nav .text-container span:last-child {
+            font-weight: bold;
+            font-size: 0.8em;
+        }
 
-    header nav {
-        display: flex;
-        align-items: center;
-    }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
 
-    header nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
 
-    header nav ul li {
-        margin: 0 10px;
-    }
+        header nav ul li {
+            margin: 0 10px;
+        }
 
-    header nav ul li a {
-        color: white;
-        text-decoration: none;
-    }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-    header .profile {
-        display: flex;
-        align-items: center;
-    }
+        header .profile {
+            display: flex;
+            align-items: center;
+        }
 
-    header .profile img {
-        height: 40px; /* Mengurangi ukuran ikon profil */
-        cursor: pointer;
-    }
+        header .profile img {
+            height: 40px;
+            cursor: pointer;
+        }
 
-    .container {
-        display: flex;
-        min-height: 100vh;
-    }
+        .container {
+            display: flex;
+            flex: 1;
+        }
 
-    .sidebar {
-        width: 200px;
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        position: sticky; /* Membuat sidebar tetap diam */
-        top: 0; /* Posisi tetap di bagian atas */
-        height: 100vh; /* Tinggi penuh */
-    }
+        .sidebar {
+            width: 200px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
 
-    .sidebar h2 {
-        margin-top: 0;
-    }
+        .sidebar h2 {
+            margin-top: 0;
+        }
 
-    .sidebar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    .sidebar ul li {
-        margin: 20px 0;
-        display: flex;
-        align-items: center;
-    }
+        .sidebar ul li {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
 
-    .sidebar ul li img {
-        width: 20px; /* Sesuaikan ukuran ikon jika perlu */
-        height: auto;
-        margin-right: 10px;
-    }
+        .sidebar ul li img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
 
-    .sidebar ul li a {
-        color: #333;
-        text-decoration: none;
-    }
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+        }
 
-    .content {
-        flex: 1;
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+        }
 
-    .card {
-        width: calc(50% - 10px);
-        background: white;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-    }
+        .top-right-content {
+            position: absolute;
+            top: 20px; /* Adjust top position as needed */
+            right: 20px; /* Adjust right position as needed */
+            background-color: #ffffff; /* Background color for clarity */
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it's above other content */
+        }
 
-    .card img {
-        width: 100%;
-        height: auto;
-    }
+        .card {
+            width: calc(50% - 10px);
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .card h3 {
-        margin: 0;
-        padding: 10px;
-        background: #339966;
-        color: white;
-        text-align: center;
-    }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
 
-    footer {
-        background: #339966;
-        color: white;
-        text-align: center;
-        padding: 1rem 1; /* Mengurangi padding untuk membuatnya lebih tipis */
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    .queue-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        .card h3 {
+            margin: 0;
+            padding: 10px;
+            background: #339966;
+            color: white;
+            text-align: center;
+        }
 
-    .queue-table th, .queue-table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
+        footer {
+            background: #339966;
+            color: white;
+            text-align: center;
+            padding: 1rem 1;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-    .queue-table th {
-        background-color: #339966;
-        color: white;
-        text-align: center;
-    }
+        .queue-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    .queue-table td {
-        text-align: center;
-    }
+        .queue-table th, .queue-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .queue-table th {
+            background-color: #339966;
+            color: white;
+            text-align: center;
+        }
+
+        .queue-table td {
+            text-align: center;
+        }
+
+        .reserve-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #339966;
+            border: 2px solid #339966;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .reserve-btn:hover {
+            background-color: white;
+            color: #339966;
+        }
+
+        /* Modal Style */
+        .modal-dialog {
+            max-width: 800px;
+        }
+
+        .modal-content {
+            padding: 20px;
+        }
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            display: flex;
+        }
+
+        .room-info {
+            flex: 1;
+            text-align: center;
+        }
+
+        .room-info h2 {
+            margin-top: 0;
+        }
+
+        .room-info img {
+            width: 50px;
+            height: auto;
+        }
+
+        .specification {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .specification img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .time-selection {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .confirm-btn {
+            margin-top: 20px;
+        }
     </style>
-    <script>
-        const reserveButtons = document.querySelectorAll('.reserve-btn');
-        const modals = document.querySelectorAll('.reservation-modal');
-
-        reserveButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                modals[index].style.display = 'block';
-            });
-        });
-
-        // Close modal when close button (×) is clicked
-        const closeButtons = document.querySelectorAll('.close');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                button.parentElement.parentElement.style.display = 'none';
-            });
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -257,66 +332,102 @@ $currentDate = $currentDateRow['tanggal'];
             </ul>
         </aside>
         <main class="content">
+            <div class="top-right-content">
+                <h2>Antrian <?php echo $currentDay; ?>, <?php echo $currentDate; ?></h2>
+                <table class="queue-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Jam Mulai</th>
+                            <th>Jam Selesai</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = "SELECT id_slot, jam_mulai, jam_selesai, status FROM slot WHERE hari = '$currentDay'";
+                        $result = mysqli_query($koneksi, $query);
+                        $no = 1;
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $no++ . "</td>";
+                            echo "<td>" . $row['jam_mulai'] . "</td>";
+                            echo "<td>" . $row['jam_selesai'] . "</td>";
+                            echo "<td>" . $row['status'] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
             <div class="room-detail">
                 <h2>Ruang 1</h2>
                 <img src="img/contoh.jpg" alt="Ruang 1">
                 <p>Ruang keberapa: 1</p>
-                <p>Spesifikasi: Kapasitas 4 orang</p>
-                <p>Maksimal peminjaman: 60 menit</p>
-                <p>Lantai: 1</p>
-                <!-- Additional details as needed -->
+                <p>Spesifikasi: Kapasitas 2 - 4 orang <img src="orang.png" alt="Icon Orang"></p>
+                <p>Maksimal peminjaman: 60 menit <img src="menit.png" alt="Icon Menit"></p>
+                <p>Lantai: 1 <img src="info_lantai.png" alt="Icon Lantai"></p>
+                <a href="#" class="reserve-btn" data-toggle="modal" data-target="#reservationModal">Reservasi</a>
             </div>
             <div>
-            <h2>Antrian <?php echo $currentDay; ?>, <?php echo $currentDate; ?></h2>
-            <table class="queue-table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Jam Mulai</th>
-                        <th>Jam Selesai</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Query untuk mengambil data slot berdasarkan hari saat ini
-                    $query = "SELECT id_slot, jam_mulai, jam_selesai, status FROM slot WHERE hari = '$currentDay'";
-                    $result = mysqli_query($koneksi, $query);
-                    $no = 1;
+        </div>
+        </main>
+    </div>
 
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        echo "<td>" . $no++ . "</td>";
-                        echo "<td>" . $row['jam_mulai'] . "</td>";
-                        echo "<td>" . $row['jam_selesai'] . "</td>";
-                        echo "<td>" . $row['status'] . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-            </div>
-            <div class="reservation-modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <img src="img/contoh.jpg" alt="Ruang 1">
-                    <div class="room-details">
+    <!-- Modal -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservationModalLabel">Ruang 1 Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="room-info">
+                        <img src="img/contoh.jpg" alt="Ruang 1">
                         <h2>Ruang 1</h2>
-                        <p>Spesifikasi: Kapasitas 4 orang</p>
-                        <label for="reservation-time">Pilih waktu:</label>
-                        <select id="reservation-time">
-                            <!-- Options populated dynamically based on available times -->
-                            <option value="07:30">07:30</option>
-                            <!-- Add more options based on available times -->
-                        </select>
-                        <button class="reserve-btn">Reserve</button>
+                        <div class="specification">
+                            <img src="orang.png" alt="Icon Orang">
+                            <p>2 - 4 orang</p>
+                        </div>
+                        <div class="specification">
+                            <img src="menit.png" alt="Icon Menit">
+                            <p>Maks. 60 Menit</p>
+                        </div>
+                        <div class="specification">
+                            <img src="info_lantai.png" alt="Icon Lantai">
+                            <p>Lantai 1</p>
+                        </div>
+                    </div>
+                    <div class="time-selection">
+                        <h3>Pilih Waktu</h3>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>-- Pilih Jam --</option>
+                                <?php
+                                // Example of generating options dynamically from database or other source
+                                $queryTimes = "SELECT jam_mulai FROM slot WHERE hari = '$currentDay'";
+                                $resultTimes = mysqli_query($koneksi, $queryTimes);
+
+                                while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
+                                    echo "<option>" . $timeRow['jam_mulai'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary confirm-btn">Konfirmasi</button>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
-    <footer>
-        <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
-    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
