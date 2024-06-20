@@ -1,3 +1,31 @@
+<?php
+include("koneksi.php");
+function hariIndonesia($hariInggris) {
+    $days = array(
+        'Sunday' => 'Minggu',
+        'Monday' => 'Senin',
+        'Tuesday' => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday' => 'Kamis',
+        'Friday' => 'Jumat',
+        'Saturday' => 'Sabtu'
+    );
+    
+    return $days[$hariInggris];
+}
+// Ambil nama hari dan tanggal saat ini
+$currentDayQuery = "SELECT DAYNAME(CURDATE()) as hari";
+$currentDayResult = mysqli_query($koneksi, $currentDayQuery);
+$currentDayRow = mysqli_fetch_assoc($currentDayResult);
+$currentDay = $currentDayRow['hari'];
+$currentDayInggris = $currentDayRow['hari'];
+$currentDay = hariIndonesia($currentDayInggris);
+
+$currentDateQuery = "SELECT CURDATE() as tanggal";
+$currentDateResult = mysqli_query($koneksi, $currentDateQuery);
+$currentDateRow = mysqli_fetch_assoc($currentDateResult);
+$currentDate = $currentDateRow['tanggal'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,6 +187,25 @@
         bottom: 0;
         width: 100%;
     }
+    .queue-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .queue-table th, .queue-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .queue-table th {
+        background-color: #339966;
+        color: white;
+        text-align: center;
+    }
+
+    .queue-table td {
+        text-align: center;
+    }
     </style>
     <script>
         const reserveButtons = document.querySelectorAll('.reserve-btn');
@@ -218,6 +265,36 @@
                 <p>Maksimal peminjaman: 60 menit</p>
                 <p>Lantai: 1</p>
                 <!-- Additional details as needed -->
+            </div>
+            <div>
+            <h2>Antrian <?php echo $currentDay; ?>, <?php echo $currentDate; ?></h2>
+            <table class="queue-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Jam Mulai</th>
+                        <th>Jam Selesai</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Query untuk mengambil data slot berdasarkan hari saat ini
+                    $query = "SELECT id_slot, jam_mulai, jam_selesai, status FROM slot WHERE hari = '$currentDay'";
+                    $result = mysqli_query($koneksi, $query);
+                    $no = 1;
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $no++ . "</td>";
+                        echo "<td>" . $row['jam_mulai'] . "</td>";
+                        echo "<td>" . $row['jam_selesai'] . "</td>";
+                        echo "<td>" . $row['status'] . "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
             </div>
             <div class="reservation-modal" style="display: none;">
                 <div class="modal-content">
