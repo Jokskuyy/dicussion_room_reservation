@@ -30,8 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
+    // Hash password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     // Insert data ke database
-    $query = "INSERT INTO akun (nama, nim, email, password) VALUES ('$name', '$nim', '$email', '$password')";
+    $query = "INSERT INTO akun (nama, nim, email, password) VALUES ('$name', '$nim', '$email', '$hashedPassword')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
