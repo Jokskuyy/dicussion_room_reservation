@@ -198,7 +198,17 @@
             <a href="#"><img src="account.jpg" alt="Profile" class="profile"></a>
         </div>
     </header>
+    
     <div class="container">
+        <aside class="sidebar">
+            <h2>Start</h2>
+            <ul>
+                <li><img src="dashboard.jpg" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
+                <li><img src="imgprofile.jpg" alt="Profile Icon"><a href="#">Profile</a></li>
+                <li><img src="history.jpg" alt="History Icon"><a href="#">History</a></li>
+                <li><img src="logout.jpg" alt="Logout Icon"><a href="index.php">Logout</a></li>
+            </ul>
+        </aside>
         <main class="content">
             <div class="room-detail">
                 <h2>Ruang 1</h2>
