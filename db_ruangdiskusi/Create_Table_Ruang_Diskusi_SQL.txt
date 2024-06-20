@@ -2,7 +2,7 @@ CREATE TABLE akun (
     nim INT PRIMARY KEY,
     nama VARCHAR(100),
     email VARCHAR(100),
-    password VARCHAR(100)
+    password VARCHAR(255)
 );
 
 CREATE TABLE ruangan (
