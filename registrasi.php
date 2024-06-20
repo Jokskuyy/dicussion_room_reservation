@@ -9,7 +9,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['regPassword'];
     $confirmPassword = $_POST['confirmPassword'];
 
-    // Validasi input
+    // Validasi NIM
+    if (!preg_match('/^\d{10}$/', $nim)) {
+        echo "<script>alert('NIM harus berupa angka sepanjang 10 angka.');</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit();
+    }
+
+    // Validasi email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Format email tidak valid.');</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit();
+    }
+
+
+    // Validasi password
+    if (strlen($password) < 10) {
+        echo "<script>alert('Password harus minimal sepanjang 10 karakter.');</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit();
+    }
+
+    // Validasi konfirmasi password
     if ($password !== $confirmPassword) {
         echo "<script>alert('Password dan Konfirmasi Password tidak cocok.');</script>";
         echo "<script>window.location.href='index.php';</script>";

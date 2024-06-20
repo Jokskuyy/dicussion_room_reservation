@@ -8,6 +8,7 @@ include("koneksi.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -381,26 +382,26 @@ include("koneksi.php");
             <form method="POST" action="registrasi.php">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Nama" required>
                 </div>
                 <div class="form-group">
                     <label for="nim">NIM:</label>
-                    <input type="text" id="nim" name="nim" required>
+                    <input class="form-control" type="text" id="nim" name="nim" placeholder="NIM" required>
                 </div>
                 <div class="form-group">
                     <label for="regEmail">Email:</label>
-                    <input type="email" id="regEmail" name="regEmail" required>
+                    <input class="form-control" type="email" id="regEmail" name="regEmail" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="regPassword">Password:</label>
-                    <input type="password" id="regPassword" name="regPassword" required>
+                    <input class="form-control" type="password" id="regPassword" name="regPassword" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit">Register</button>
+                    <button type="submit" >Register</button>
                 </div>
             </form>
         </div>
