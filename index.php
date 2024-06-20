@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("koneksi.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -348,18 +352,18 @@
     </footer>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <div  id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeLogin">&times;</span>
             <h2>Login</h2>
-            <form>
+            <form method="post" action="login.php">
                 <div class="form-group">
-                    <label for="username">Username (NIM / Email):</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="nim">NIM:</label>
+                    <input type="text" id="nim" name="nim" placeholder="NIM" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Login</button>
@@ -374,7 +378,7 @@
         <div class="modal-content">
             <span class="close" id="closeRegister">&times;</span>
             <h2>Register</h2>
-            <form>
+            <form method="POST" action="registrasi.php">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
