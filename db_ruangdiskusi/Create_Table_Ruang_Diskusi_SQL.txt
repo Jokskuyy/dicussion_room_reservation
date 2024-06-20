@@ -35,3 +35,5 @@ CREATE TABLE reservasi (
     FOREIGN KEY (id_ruangan) REFERENCES ruangan(id_ruangan),
     FOREIGN KEY (id_slot) REFERENCES slot(id_slot)
 );
+
+ALTER TABLE slot ADD status ENUM('tersedia', 'penuh') DEFAULT 'tersedia';
