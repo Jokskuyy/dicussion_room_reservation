@@ -27,6 +27,17 @@ include("koneksi.php");
             padding: 1rem 0;
         }
 
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .container .d-flex {
+            display: flex;
+            align-items: center;
+        }
+
         .full-width-image {
             width: 100%;
             text-align: center; /* Untuk memastikan gambar berada di tengah */
@@ -290,9 +301,16 @@ include("koneksi.php");
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="img/imglogo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <div>
+                    <h2 style="margin: 0; font-size: 1.5rem;">UPA Perpustakaan</h2>
+                    <h3 style="margin: 0; font-size: 1.25rem;">UPN Veteran Jakarta</h3>
+                </div>
+            </div>
             <nav>
-                <ul>
+                <ul class="d-flex justify-content-end align-items-center" style="list-style: none; padding: 0; margin: 0;">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#help">Help</a></li>
                     <li><a id="loginBtn">Login</a></li>
@@ -350,7 +368,7 @@ include("koneksi.php");
     </footer>
 
     <!-- Login Modal -->
-    <div  id="loginModal" class="modal">
+    <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeLogin">&times;</span>
             <h2>Login</h2>
@@ -398,7 +416,7 @@ include("koneksi.php");
                     <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" >Register</button>
+                    <button type="submit">Register</button>
                 </div>
             </form>
         </div>
@@ -412,7 +430,7 @@ include("koneksi.php");
         reservasiSekarang.onclick = function() {
             loginModal.style.display = 'block';
         }
-        
+
         // Get the modals
         var loginModal = document.getElementById('loginModal');
         var registerModal = document.getElementById('registerModal');
