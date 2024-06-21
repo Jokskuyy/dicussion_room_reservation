@@ -1,6 +1,7 @@
 <?php
 include("koneksi.php");
 session_start();
+
 function hariIndonesia($hariInggris) {
     $days = array(
         'Sunday' => 'Minggu',
@@ -14,11 +15,11 @@ function hariIndonesia($hariInggris) {
     
     return $days[$hariInggris];
 }
+
 // Ambil nama hari dan tanggal saat ini
 $currentDayQuery = "SELECT DAYNAME(CURDATE()) as hari";
 $currentDayResult = mysqli_query($koneksi, $currentDayQuery);
 $currentDayRow = mysqli_fetch_assoc($currentDayResult);
-$currentDay = $currentDayRow['hari'];
 $currentDayInggris = $currentDayRow['hari'];
 $currentDay = hariIndonesia($currentDayInggris);
 
@@ -162,12 +163,12 @@ $currentDate = $currentDateRow['tanggal'];
 
         .top-right-content {
             position: absolute;
-            top: 20px; /* Adjust top position as needed */
-            right: 20px; /* Adjust right position as needed */
-            background-color: #ffffff; /* Background color for clarity */
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
             padding: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* Ensure it's above other content */
+            z-index: 1000;
         }
 
         .card {
@@ -243,7 +244,6 @@ $currentDate = $currentDateRow['tanggal'];
             color: #339966;
         }
 
-        /* Modal Style */
         .modal-dialog {
             max-width: 800px;
         }
@@ -371,8 +371,6 @@ $currentDate = $currentDateRow['tanggal'];
                 <p>Lantai: 1 <img src="info_lantai.png" alt="Icon Lantai"></p>
                 <a href="#" class="reserve-btn" data-toggle="modal" data-target="#reservationModal">Reservasi</a>
             </div>
-            <div>
-        </div>
         </main>
     </div>
 
@@ -405,21 +403,25 @@ $currentDate = $currentDateRow['tanggal'];
                     </div>
                     <div class="time-selection">
                         <h3>Pilih Waktu</h3>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>-- Pilih Jam --</option>
-                                <?php
-                                // Example of generating options dynamically from database or other source
-                                $queryTimes = "SELECT jam_mulai FROM slot WHERE hari = '$currentDay'";
-                                $resultTimes = mysqli_query($koneksi, $queryTimes);
-
-                                while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
-                                    echo "<option>" . $timeRow['jam_mulai'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-primary confirm-btn">Konfirmasi</button>
+                        <form action="reservation.php" method="POST">
+                            <div class="form-group">
+                                <label for="selected_time">Jam:</label>
+                                <select class="form-control" id="selected_time" name="selected_time" required>
+                                    <option>-- Pilih Jam --</option>
+                                    <?php
+                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'";
+                                    $resultTimes = mysqli_query($koneksi, $queryTimes);
+                                    
+                                    while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
+                                        echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <input type="hidden" name="room_id" value="1">
+                            <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
+                            <button type="submit" class="btn btn-primary confirm-btn">Konfirmasi</button>
+                        </form>
                     </div>
                 </div>
             </div>

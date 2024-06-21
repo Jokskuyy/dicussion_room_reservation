@@ -1,47 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservasi Ruang Diskusi</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Reservasi Ruang Diskusi</h1>
-    </header>
-    <main>
-        <section id="reservation-form">
-            <form action="#" method="POST">
-                <div>
-                    <label for="nim">NIM:</label>
-                    <input type="text" id="nim" name="nim" required>
-                </div>
-                <div>
-                    <label for="name">Nama:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div>
-                    <label for="room">Pilih Ruangan:</label>
-                    <select id="room" name="room" required>
-                        <option value="1">Ruang 1 (Max 4 orang)</option>
-                        <option value="2">Ruang 2 (Max 4 orang)</option>
-                        <option value="3">Ruang 3 (Max 4 orang)</option>
-                        <option value="4">Ruang 4 (Max 12 orang)</option>
-                        <option value="5">Ruang 5 (Max 12 orang)</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="date">Tanggal:</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                <div>
-                    <label for="time">Waktu:</label>
-                    <input type="time" id="time" name="time" required>
-                </div>
-                <button type="submit">Reservasi</button>
-            </form>
-        </section>
-    </main>
-</body>
-</html>
+<?php
+include("koneksi.php");
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $selected_time = $_POST['selected_time'];
+    $room_id = $_POST['room_id'];
+    $date = $_POST['date'];
+    $nim = $_SESSION['nim']; // Pastikan nim diambil dari session yang aktif
+
+    // Pisahkan waktu mulai dan selesai
+    list($jam_mulai, $jam_selesai) = explode('-', $selected_time);
+
+    // Dapatkan hari dalam bahasa Indonesia
+    $queryHari = "SELECT DAYNAME('$date') as hari";
+    $resultHari = mysqli_query($koneksi, $queryHari);
+    $rowHari = mysqli_fetch_assoc($resultHari);
+    $hariInggris = $rowHari['hari'];
+
+    $days = array(
+        'Sunday' => 'Minggu',
+        'Monday' => 'Senin',
+        'Tuesday' => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday' => 'Kamis',
+        'Friday' => 'Jumat',
+        'Saturday' => 'Sabtu'
+    );
+
+    $hari = $days[$hariInggris];
+
+    // Cari id_slot berdasarkan waktu yang dipilih dan hari
+    $querySlot = "SELECT id_slot FROM slot WHERE hari = '$hari' AND jam_mulai = '$jam_mulai' AND jam_selesai = '$jam_selesai'";
+    $resultSlot = mysqli_query($koneksi, $querySlot);
+    $rowSlot = mysqli_fetch_assoc($resultSlot);
+    $id_slot = $rowSlot['id_slot'];
+
+    // Periksa apakah slot sudah penuh
+    $queryCheckStatus = "SELECT status FROM slot WHERE id_slot = '$id_slot'";
+    $resultCheckStatus = mysqli_query($koneksi, $queryCheckStatus);
+    $rowCheckStatus = mysqli_fetch_assoc($resultCheckStatus);
+
+    if ($rowCheckStatus['status'] == 'penuh') {
+        echo "Slot sudah penuh, silakan pilih slot lain.";
+    } else {
+        // Masukkan reservasi baru
+        $query = "INSERT INTO reservasi (nim, id_ruangan, id_slot, tanggal, hari) VALUES ('$nim', '$room_id', '$id_slot', '$date', '$hari')";
+        
+        if (mysqli_query($koneksi, $query)) {
+            // Update status slot menjadi penuh
+            $updateSlotStatus = "UPDATE slot SET status = 'penuh' WHERE id_slot = '$id_slot'";
+            mysqli_query($koneksi, $updateSlotStatus);
+            
+            echo "Reservasi berhasil!";
+        } else {
+            echo "Reservasi gagal: " . mysqli_error($koneksi);
+        }
+    }
+}
+?>
