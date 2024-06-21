@@ -13,7 +13,7 @@ include("koneksi.php");
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
-            background-color: #f0f0f0; /* Warna latar belakang normal */
+            background-color: #f0f0f0;
         }
 
         .container {
@@ -24,19 +24,30 @@ include("koneksi.php");
         header {
             background: #339966;
             color: white;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .container .d-flex {
+            display: flex;
+            align-items: center;
         }
 
         .full-width-image {
             width: 100%;
-            text-align: center; /* Untuk memastikan gambar berada di tengah */
+            text-align: center;
         }
 
         .full-width-image img {
-            width: 100%; /* Gambar akan mengambil lebar maksimal dari parentnya */
-            height: auto; /* Memastikan proporsi gambar tetap terjaga */
-            display: block; /* Memastikan gambar tetap di tengah vertikal jika dibutuhkan */
-            max-width: 100%; /* Mencegah gambar melampaui lebar aslinya */
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
         }
 
         header h1 {
@@ -140,8 +151,8 @@ include("koneksi.php");
         .map img {
             max-width: 100%;
             height: auto;
-            width: 80%; /* Memastikan gambar map memenuhi lebar parent */
-            max-height: 300px; /* Atur tinggi maksimal sesuai kebutuhan */
+            width: 80%;
+            max-height: 300px;
         }
 
         .address p {
@@ -153,11 +164,11 @@ include("koneksi.php");
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Set minimum tinggi body sebesar tinggi layar (viewport) */
+            min-height: 100vh;
         }
 
         main {
-            flex: 1; /* Membuat main mengisi ruang yang tersedia */
+            flex: 1;
         }
 
         footer {
@@ -171,7 +182,6 @@ include("koneksi.php");
             margin: 0;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -213,7 +223,7 @@ include("koneksi.php");
             width: 100%;
             height: 100%;
             background-color: #339966;
-            opacity: 0.5; /* Opacity 50% */
+            opacity: 0.5;
         }
 
         .hero img {
@@ -276,23 +286,30 @@ include("koneksi.php");
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 1; /* Agar teks tetap di atas overlay */
+            z-index: 1;
         }
 
         .hero-text h2 {
-            font-size: 2.5rem; /* Atur ukuran font sesuai keinginan */
+            font-size: 2.5rem;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Efek bayangan teks */
-            cursor: pointer; /* Ubah kursor saat hover */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            cursor: pointer;
         }
 
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="img/imglogo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <div>
+                    <h2 style="margin: 0; font-size: 1.5rem;">UPA Perpustakaan</h2>
+                    <h3 style="margin: 0; font-size: 1.25rem;">UPN Veteran Jakarta</h3>
+                </div>
+            </div>
             <nav>
-                <ul>
+                <ul class="d-flex justify-content-end align-items-center" style="list-style: none; padding: 0; margin: 0;">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#help">Help</a></li>
                     <li><a id="loginBtn">Login</a></li>
@@ -328,10 +345,12 @@ include("koneksi.php");
                         </div>
                     </div>
                     <div class="right">
-                        <div class="map">
-                            <h2>Lokasi</h2>
+                    <div class="map">
+                        <h2>Lokasi</h2>
+                        <a href="https://maps.app.goo.gl/B2bJe3erTjoYifqu7" target="_blank">
                             <img src="img/lokasi.jpg" alt="Google Map">
-                        </div>
+                        </a>
+                    </div>
                         <div class="address">
                             <h3>Alamat</h3>
                             <p><img src="img/logolokasi.jpg" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
@@ -349,8 +368,7 @@ include("koneksi.php");
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div  id="loginModal" class="modal">
+    <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeLogin">&times;</span>
             <h2>Login</h2>
@@ -371,7 +389,6 @@ include("koneksi.php");
         </div>
     </div>
 
-    <!-- Register Modal -->
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeRegister">&times;</span>
@@ -398,34 +415,28 @@ include("koneksi.php");
                     <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" >Register</button>
+                    <button type="submit">Register</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Get the element containing "Reservasi Sekarang"
         var reservasiSekarang = document.querySelector('.hero-text h2');
 
-        // Add click event to open login modal
         reservasiSekarang.onclick = function() {
             loginModal.style.display = 'block';
         }
-        
-        // Get the modals
+
         var loginModal = document.getElementById('loginModal');
         var registerModal = document.getElementById('registerModal');
 
-        // Get the buttons that open the modals
         var loginBtn = document.getElementById('loginBtn');
         var registerBtn = document.getElementById('registerBtn');
 
-        // Get the <span> elements that close the modals
         var closeLogin = document.getElementById('closeLogin');
         var closeRegister = document.getElementById('closeRegister');
 
-        // When the user clicks the button, open the modal
         loginBtn.onclick = function() {
             loginModal.style.display = 'block';
         }
@@ -435,7 +446,6 @@ include("koneksi.php");
             loginModal.style.display = 'none';
         }
 
-        // When the user clicks on <span> (x), close the modal
         closeLogin.onclick = function() {
             loginModal.style.display = 'none';
         }
@@ -444,7 +454,6 @@ include("koneksi.php");
             registerModal.style.display = 'none';
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == loginModal) {
                 loginModal.style.display = 'none';

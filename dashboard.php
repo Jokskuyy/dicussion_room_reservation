@@ -175,7 +175,7 @@
             </nav>
         </div>
         <div class="right-nav">
-            <a href="#"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
+            <a href="profile.php"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
         </div>
     </header>
     <div class="container">
