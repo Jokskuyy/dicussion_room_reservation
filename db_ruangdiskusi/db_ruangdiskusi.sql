@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 04:29 PM
+-- Generation Time: Jun 21, 2024 at 04:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`nim`, `nama`, `email`, `password`) VALUES
-('2210511131', 'Dwikhi Deandra Purnianto', '2210511131@mahasiswa.upnvj.ac.id', '$2y$10$8E7j3RaOvCvqBlcT/BQVLeood5XAT4OXrR/CXSNR4TxH8D4zPmPrS');
+('2210511131', 'Dwikhi Deandra Purnianto', '2210511131@mahasiswa.upnvj.ac.id', '$2y$10$8E7j3RaOvCvqBlcT/BQVLeood5XAT4OXrR/CXSNR4TxH8D4zPmPrS'),
+('2210511160', 'Bagas Seno', '2210511160@mahasiswa.upnvj.ac.id', '$2y$10$cCUA.QewesZIeqhKT6WRX.22IIXqJyesl91apuE9vv4EhU7xc0e4i');
 
 -- --------------------------------------------------------
 
@@ -80,6 +81,16 @@ CREATE TABLE `reservasi` (
   `tanggal` date DEFAULT NULL,
   `hari` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reservasi`
+--
+
+INSERT INTO `reservasi` (`id_reservasi`, `nim`, `id_ruangan`, `id_slot`, `tanggal`, `hari`) VALUES
+(1, '2210511131', 1, 49, '2024-06-21', 'Jumat'),
+(2, '2210511131', 1, 50, '2024-06-21', 'Jumat'),
+(3, '2210511131', 1, 51, '2024-06-21', 'Jumat'),
+(4, '2210511131', 1, 52, '2024-06-21', 'Jumat');
 
 -- --------------------------------------------------------
 
@@ -170,10 +181,10 @@ INSERT INTO `slot` (`id_slot`, `hari`, `jam_mulai`, `jam_selesai`, `status`) VAL
 (46, 'kamis', '16:30:00', '17:30:00', 'tersedia'),
 (47, 'kamis', '17:30:00', '18:30:00', 'tersedia'),
 (48, 'kamis', '18:30:00', '19:00:00', 'tersedia'),
-(49, 'jumat', '07:30:00', '08:30:00', 'tersedia'),
-(50, 'jumat', '08:30:00', '09:30:00', 'tersedia'),
-(51, 'jumat', '09:30:00', '10:30:00', 'tersedia'),
-(52, 'jumat', '10:30:00', '11:30:00', 'tersedia'),
+(49, 'jumat', '07:30:00', '08:30:00', 'penuh'),
+(50, 'jumat', '08:30:00', '09:30:00', 'penuh'),
+(51, 'jumat', '09:30:00', '10:30:00', 'penuh'),
+(52, 'jumat', '10:30:00', '11:30:00', 'penuh'),
 (53, 'jumat', '11:30:00', '12:30:00', 'tersedia'),
 (54, 'jumat', '12:30:00', '13:30:00', 'tersedia'),
 (55, 'jumat', '13:30:00', '14:30:00', 'tersedia'),
@@ -223,6 +234,16 @@ ALTER TABLE `ruangan`
 --
 ALTER TABLE `slot`
   ADD PRIMARY KEY (`id_slot`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `reservasi`
+--
+ALTER TABLE `reservasi`
+  MODIFY `id_reservasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -164,9 +164,9 @@ $currentDate = $currentDateRow['tanggal'];
         .top-right-content {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: -110px;
             background-color: #ffffff;
-            padding: 10px;
+            padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
@@ -327,8 +327,8 @@ $currentDate = $currentDateRow['tanggal'];
             <h2>Start</h2>
             <ul>
                 <li><img src="dashboard.jpg" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
-                <li><img src="imgprofile.jpg" alt="Profile Icon"><a href="#">Profile</a></li>
-                <li><img src="history.jpg" alt="History Icon"><a href="#">History</a></li>
+                <li><img src="imgprofile.jpg" alt="Profile Icon"><a href="profile.php">Profile</a></li>
+                <li><img src="history.jpg" alt="History Icon"><a href="history.php">History</a></li>
                 <li><img src="logout.jpg" alt="Logout Icon"><a href="index.php">Logout</a></li>
             </ul>
         </aside>
@@ -409,7 +409,8 @@ $currentDate = $currentDateRow['tanggal'];
                                 <select class="form-control" id="selected_time" name="selected_time" required>
                                     <option>-- Pilih Jam --</option>
                                     <?php
-                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'";
+                                    $status = 'tersedia';
+                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
                                     $resultTimes = mysqli_query($koneksi, $queryTimes);
                                     
                                     while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
