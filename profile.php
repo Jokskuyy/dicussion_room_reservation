@@ -235,7 +235,7 @@ $user = mysqli_fetch_assoc($result);
             <ul>
                 <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
                 <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile.php">Profile</a></li>
-                <li><img src="img/history_icon.png" alt="History Icon"><a href="#">History</a></li>
+                <li><img src="img/history_icon.png" alt="History Icon"><a href="history.php">History</a></li>
                 <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="index.php">Logout</a></li>
             </ul>
         </aside>
