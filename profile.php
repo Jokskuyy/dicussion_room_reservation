@@ -5,232 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #339966;
+            color: white;
+            padding: 1rem 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background-color: #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-}
+        header .left-nav {
+            display: flex;
+            align-items: center;
+        }
 
-.sidebar .logo img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-}
+        header .left-nav img {
+            height: 40px;
+            margin-right: 10px;
+        }
 
-.sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+        header .left-nav .text-container {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
 
-.sidebar-menu a {
-    text-decoration: none;
-    color: #333;
-    padding: 15px 20px;
-    text-align: center;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-}
+        header .left-nav .text-container span:first-child {
+            font-weight: bold;
+        }
 
-.sidebar-menu a img {
-    width: 20px;
-    margin-right: 10px;
-}
+        header .left-nav .text-container span:last-child {
+            font-weight: bold;
+            font-size: 0.8em;
+        }
 
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-    background-color: #ddd;
-}
+        header nav {
+            display: flex;
+            align-items: center;
+        }
 
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-}
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 2px solid #ccc;
-}
+        header nav ul li {
+            margin: 0 10px;
+        }
 
-.header .left-nav {
-    display: flex;
-    align-items: center;
-}
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-.header .left-nav img {
-    height: 40px;
-    margin-right: 10px;
-}
+        header .right-nav {
+            display: flex;
+            align-items: center;
+        }
 
-.header .left-nav .text-container {
-    display: flex;
-    flex-direction: column;
-}
+        header .right-nav img {
+            height: 40px;
+            width: auto;
+            cursor: pointer;
+        }
 
-.header .left-nav .text-container span:first-child {
-    font-weight: bold;
-}
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
 
-.header .left-nav .text-container span:last-child {
-    font-weight: bold;
-    font-size: 0.8em;
-}
+        .sidebar {
+            width: 200px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
 
-.header-right a {
-    text-decoration: none;
-    color: #00796b;
-    margin-left: 20px;
-}
+        .sidebar h2 {
+            margin-top: 0;
+        }
 
-.header-right .user-profile {
-    display: flex;
-    align-items: center;
-}
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.header-right .user-profile span {
-    margin-right: 10px;
-}
+        .sidebar ul li {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
 
-.header-right .user-profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
+        .sidebar ul li img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
 
-.profile-section {
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+        }
 
-.cover-photo img {
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-}
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
 
-.profile-info {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 0 0 10px 10px;
-    position: relative;
-    top: -50px;
-}
+        .profile-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-.profile-info .profile-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-}
+        .profile-section img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
 
-.profile-info .user-details {
-    margin-left: 20px;
-}
+        .profile-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            top: -50px;
+        }
 
-.profile-info .user-details h2 {
-    margin: 0;
-}
+        .profile-info .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+        }
 
-.profile-content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
+        .profile-info .user-details {
+            margin-left: 20px;
+        }
 
-.profile-content .box {
-    background-color: #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    box-sizing: border-box;
-}
+        .profile-info .user-details h2 {
+            margin: 0;
+        }
 
-.profile-content .box h3 {
-    margin-top: 0;
-}
+        .profile-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
 
+        .profile-content .box {
+            background-color: #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        .profile-content .box h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background: #339966;
+            color: white;
+            text-align: center;
+            padding: 1rem 1;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <img src="img/imglogo.png" alt="UPN Veteran Jakarta Logo">
+    <header>
+        <div class="left-nav">
+            <img src="img/imglogo.png" alt="Logo">
+            <div class="text-container">
+                <span>UPA Perpustakaan</span>
+                <span>UPN Veteran Jakarta</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php">Logout</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="sidebar-menu">
-            <a href="dashboard.php"><img src="dashboard.jpg" alt="Dashboard Icon">Dashboard</a>
-            <a href="#" class="active"><img src="imgprofile.jpg" alt="Profile Icon">Profile</a>
-            <a href="#"><img src="history.jpg" alt="History Icon">History</a>
-            <a href="index.php"><img src="logout.jpg" alt="Logout Icon">Logout</a>
+        <div class="right-nav">
+            <a href="#"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
         </div>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Start</h2>
+            <ul>
+                <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
+                <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile.php">Profile</a></li>
+                <li><img src="img/history_icon.png" alt="History Icon"><a href="#">History</a></li>
+                <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="index.php">Logout</a></li>
+            </ul>
+        </aside>
+        <main class="content">
+            <div class="profile-section">
+                <div class="cover-photo">
+                    <img src="path/to/cover-image.png" alt="Cover Photo">
+                </div>
+                <div class="profile-info">
+                    <img src="path/to/profile-image.png" alt="User Profile" class="profile-image">
+                    <div class="user-details">
+                        <h2>User001</h2>
+                        <p>2210511001@mahasiswa.upnvj.ac.id</p>
+                    </div>
+                </div>
+                <div class="profile-content">
+                    <div class="box profile-box">
+                        <h3>Profile</h3>
+                        <p>Nama : User001</p>
+                        <p>NIM : 2210511001</p>
+                        <p>Email : 2210511001@mahasiswa.upnvj.ac.id</p>
+                        <p>Last Booking : 12 - 5 - 2024</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="main-content">
-        <div class="header">
-            <div class="left-nav">
-                <img src="img/imglogo.png" alt="Logo">
-                <div class="text-container">
-                    <span>UPA Perpustakaan</span>
-                    <span>UPN Veteran Jakarta</span>
-                </div>
-            </div>
-            <div class="header-right">
-                <a href="index.php">Home</a>
-                <a href="index.php">Logout</a>
-                <div class="user-profile">
-                    <span>User001</span>
-                    <img src="img/profile_photo.png" alt="Profile">
-                </div>
-            </div>
-        </div>
-        <div class="profile-section">
-            <div class="cover-photo">
-                <img src="path/to/cover-image.png" alt="Cover Photo">
-            </div>
-            <div class="profile-info">
-                <img src="path/to/profile-image.png" alt="User Profile" class="profile-image">
-                <div class="user-details">
-                    <h2>User001</h2>
-                    <p>2210511001@mahasiswa.upnvj.ac.id</p>
-                </div>
-            </div>
-            <div class="profile-content">
-                <div class="box profile-box">
-                    <h3>Profile</h3>
-                    <p>Nama : User001</p>
-                    <p>NIM : 2210511001</p>
-                    <p>Email : 2210511001@mahasiswa.upnvj.ac.id</p>
-                    <p>Last Booking : 12 - 5 - 2024</p>
-                </div>
-                <div class="box about-me-box">
-                    <h3>About Me</h3>
-                    <p>Hidup hanya sekali, tapi kalau dilakukan dengan benar, sekali sudah cukup.</p>
-                </div>
-                <div class="box note-box">
-                    <h3>Note</h3>
-                    <p>Jam 3, tgl 10 nugas kelompok</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
+    </footer>
 </body>
 </html>
