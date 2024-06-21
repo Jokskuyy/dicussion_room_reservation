@@ -1,3 +1,24 @@
+<?php
+include("koneksi.php");
+session_start();
+
+if (!isset($_SESSION['nim'])) {
+    header("Location: index.php");
+    exit();
+}
+
+$nim = $_SESSION['nim'];
+
+$query = "SELECT nama, nim, email FROM akun WHERE nim = '$nim'";
+$result = mysqli_query($koneksi, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($koneksi));
+}
+
+$user = mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,17 +247,18 @@
                 <div class="profile-info">
                     <img src="path/to/profile-image.png" alt="User Profile" class="profile-image">
                     <div class="user-details">
-                        <h2>User001</h2>
-                        <p>2210511001@mahasiswa.upnvj.ac.id</p>
+                        <h2><?php echo $user['nama']; ?></h2>
+                        <p><?php echo $user['nim']; ?></p>
+                        <p><?php echo $user['email']; ?></p>
                     </div>
                 </div>
                 <div class="profile-content">
                     <div class="box profile-box">
                         <h3>Profile</h3>
-                        <p>Nama : User001</p>
-                        <p>NIM : 2210511001</p>
-                        <p>Email : 2210511001@mahasiswa.upnvj.ac.id</p>
-                        <p>Last Booking : 12 - 5 - 2024</p>
+                        <p>Nama : <?php echo $user['nama']; ?></p>
+                        <p>NIM : <?php echo $user['nim']; ?></p>
+                        <p>Email : <?php echo $user['email']; ?></p>
+                        <p>Last Booking : 12 - 5 - 2024</p> <!-- Update this dynamically if needed -->
                     </div>
                 </div>
             </div>
