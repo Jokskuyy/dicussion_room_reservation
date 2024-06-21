@@ -409,7 +409,8 @@ $currentDate = $currentDateRow['tanggal'];
                                 <select class="form-control" id="selected_time" name="selected_time" required>
                                     <option>-- Pilih Jam --</option>
                                     <?php
-                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'";
+                                    $status = 'tersedia';
+                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
                                     $resultTimes = mysqli_query($koneksi, $queryTimes);
                                     
                                     while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
