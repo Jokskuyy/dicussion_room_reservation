@@ -183,8 +183,8 @@
             <h2>Start</h2>
             <ul>
                 <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
-                <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="">Profile</a></li>
-                <li><img src="img/history_icon.png" alt="History Icon"><a href="#">History</a></li>
+                <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile.php">Profile</a></li>
+                <li><img src="img/history_icon.png" alt="History Icon"><a href="history.php">History</a></li>
                 <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="index.php">Logout</a></li>
             </ul>
         </aside>
@@ -193,19 +193,19 @@
                 <img src="img/contoh.jpg" alt="Ruang 1">
                 <h3>Ruang 1</h3>
             </a>            
-            <a href="room1.html" class="card">
+            <a href="room2.php" class="card">
                 <img src="img/contoh.jpg" alt="Ruang 2">
                 <h3>Ruang 2</h3>
             </a>            
-            <a href="room1.html" class="card">
+            <a href="room3.php" class="card">
                 <img src="img/contoh.jpg" alt="Ruang 3">
                 <h3>Ruang 3</h3>
             </a>            
-            <a href="room1.html" class="card">
+            <a href="room4.php" class="card">
                 <img src="img/contoh.jpg" alt="Ruang 4">
                 <h3>Ruang 4</h3>
             </a>            
-            <a href="room1.html" class="card">
+            <a href="room5.php" class="card">
                 <img src="img/contoh.jpg" alt="Ruang 5">
                 <h3>Ruang 5</h3>
             </a>            

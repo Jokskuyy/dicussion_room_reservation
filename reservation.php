@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($rowCheckStatus['status'] == 'penuh') {
         echo "<script>alert('Slot sudah penuh, silakan pilih slot lain.');</script>";
-        echo "<script>window.location.href='room1.php';</script>";
+        echo "<script>window.location.href='dashboard.php';</script>";
     } else {
         // Masukkan reservasi baru
         $query = "INSERT INTO reservasi (nim, id_ruangan, id_slot, tanggal, hari) VALUES ('$nim', '$room_id', '$id_slot', '$date', '$hari')";
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $updateSlotStatus = "UPDATE slot SET status = 'penuh' WHERE id_slot = '$id_slot'";
             mysqli_query($koneksi, $updateSlotStatus);
             echo "<script>alert('Reservasi berhasil!');</script>";
-            echo "<script>window.location.href='room1.php';</script>";
+            echo "<script>window.location.href='dashboard.php';</script>";
         } else {
             echo "Reservasi gagal: " . mysqli_error($koneksi);
         }

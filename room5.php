@@ -752,8 +752,8 @@ $currentDate = $currentDateRow['tanggal'];
                 </table>
             </div>
             <div class="room-detail">
-                <h2>Ruang 1</h2>
-                <img src="img/contoh.jpg" alt="Ruang 1">
+                <h2>Ruang 5</h2>
+                <img src="img/contoh.jpg" alt="Ruang 5">
                 <p>Spesifikasi: Kapasitas 2 - 4 orang <img src="orang.png" alt="Icon Orang"></p>
                 <p>Maksimal peminjaman: 60 menit <img src="menit.png" alt="Icon Menit"></p>
                 <p>Lantai: 1 <img src="info_lantai.png" alt="Icon Lantai"></p>
@@ -767,15 +767,15 @@ $currentDate = $currentDateRow['tanggal'];
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="reservationModalLabel">Ruang 1 Detail</h5>
+                    <h5 class="modal-title" id="reservationModalLabel">Ruang 5 Detail</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="room-info">
-                        <img src="img/contoh.jpg" alt="Ruang 1">
-                        <h2>Ruang 1</h2>
+                        <img src="img/contoh.jpg" alt="Ruang 5">
+                        <h2>Ruang 5</h2>
                         <div class="specification">
                             <img src="orang.png" alt="Icon Orang">
                             <p>2 - 4 orang</p>
@@ -807,7 +807,7 @@ $currentDate = $currentDateRow['tanggal'];
                                     ?>
                                 </select>
                             </div>
-                            <input type="hidden" name="room_id" value="1">
+                            <input type="hidden" name="room_id" value="3">
                             <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
                             <button type="submit" id="openModalBtn" class="btn btn-primary">Konfirmasi</button>
                         </form>
