@@ -754,9 +754,9 @@ $currentDate = $currentDateRow['tanggal'];
             <div class="room-detail">
                 <h2>Ruang 1</h2>
                 <img src="img/contoh.jpg" alt="Ruang 1">
-                <p>Spesifikasi: Kapasitas 2 - 4 orang <img src="orang.png" alt="Icon Orang"></p>
-                <p>Maksimal peminjaman: 60 menit <img src="menit.png" alt="Icon Menit"></p>
-                <p>Lantai: 1 <img src="info_lantai.png" alt="Icon Lantai"></p>
+                <p>Spesifikasi: Kapasitas 2 - 4 orang <img src="img/orang.png" alt="Icon Orang"></p>
+                <p>Maksimal peminjaman: 60 menit <img src="img/menit.png" alt="Icon Menit"></p>
+                <p>Lantai: 1 <img src="img/info_lantai.png" alt="Icon Lantai"></p>
                 <a href="#" class="reserve-btn" data-toggle="modal" data-target="#reservationModal">Reservasi</a>
             </div>
         </main>
