@@ -16,13 +16,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Validasi email
+    // Validasi email dan tentukan status
+    if (strpos($email, '@mahasiswa.upnvj.ac.id') !== false) {
+        $status = 'mahasiswa';
+    } elseif (strpos($email, '@dosen.upnvj.ac.id') !== false) {
+        $status = 'dosen';
+    } else {
+        echo "<script>alert('Email harus menggunakan domain @mahasiswa.upnvj.ac.id atau @dosen.upnvj.ac.id.');</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit();
+    }
+
+    // Validasi format email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Format email tidak valid.');</script>";
         echo "<script>window.location.href='index.php';</script>";
         exit();
     }
-
 
     // Validasi password
     if (strlen($password) < 10) {
@@ -43,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkResult = mysqli_query($koneksi, $checkQuery);
 
     if (!$checkResult) {
-        die("Query gagal: " . mysqli_error($conn));
+        die("Query gagal: " . mysqli_error($koneksi));
     }
 
     if (mysqli_num_rows($checkResult) > 0) {
@@ -56,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data ke database
-    $query = "INSERT INTO akun (nama, nim, email, password) VALUES ('$name', '$nim', '$email', '$hashedPassword')";
+    $query = "INSERT INTO akun (nama, nim, email, password, status_akun) VALUES ('$name', '$nim', '$email', '$hashedPassword', '$status')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {

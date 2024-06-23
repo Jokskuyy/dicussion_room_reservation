@@ -175,11 +175,9 @@ include("koneksi.php");
             background: #339966;
             color: white;
             text-align: center;
-            padding: 1rem 0;
-        }
-
-        footer p {
-            margin: 0;
+            padding: 1rem 1;
+            bottom: 0;
+            width: 100%;
         }
 
         .modal {

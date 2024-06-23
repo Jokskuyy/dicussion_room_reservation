@@ -430,16 +430,6 @@ $currentDate = $currentDateRow['tanggal'];
             text-align: center;
         }
 
-        footer {
-            background: #339966;
-            color: white;
-            text-align: center;
-            padding: 1rem 1;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
         .queue-table {
             width: 100%;
             border-collapse: collapse;
@@ -680,13 +670,11 @@ $currentDate = $currentDateRow['tanggal'];
             color: white;
             text-align: center;
         }
-
         footer {
             background: #339966;
             color: white;
             text-align: center;
             padding: 1rem 1;
-            position: fixed;
             bottom: 0;
             width: 100%;
         }

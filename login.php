@@ -22,6 +22,12 @@ if ($nim != '' && $password != '') {
             $_SESSION['nama'] = $data['nama']; // Set session nama
             setcookie("message", "", time() - 60); // Hapus cookie message
             header("location: dashboard.php"); // Redirect ke halaman dashboard.php
+            // Redirect berdasarkan status pengguna
+            if ($data['status'] == 'dosen') {
+                header("location: dashboard_dosen.php"); // Redirect ke halaman dashboard_dosen.php
+            } else {
+                header("location: dashboard.php"); // Redirect ke halaman dashboard.php
+            }
         } else {
             setcookie("message", "Maaf, NIM atau password salah", time() + 60);
             header("location: index.php"); // Redirect ke halaman index.php
