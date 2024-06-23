@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2024 at 04:54 AM
+-- Generation Time: Jun 23, 2024 at 11:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,16 +31,17 @@ CREATE TABLE `akun` (
   `nim` varchar(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  `status_akun` varchar(10) NOT NULL DEFAULT 'mahasiswa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `akun`
 --
 
-INSERT INTO `akun` (`nim`, `nama`, `email`, `password`) VALUES
-('2210511131', 'Dwikhi Deandra Purnianto', '2210511131@mahasiswa.upnvj.ac.id', '$2y$10$8E7j3RaOvCvqBlcT/BQVLeood5XAT4OXrR/CXSNR4TxH8D4zPmPrS'),
-('2210511160', 'Bagas Seno', '2210511160@mahasiswa.upnvj.ac.id', '$2y$10$cCUA.QewesZIeqhKT6WRX.22IIXqJyesl91apuE9vv4EhU7xc0e4i');
+INSERT INTO `akun` (`nim`, `nama`, `email`, `password`, `status_akun`) VALUES
+('2210511128', 'Nabil Ihsan Syakir', '2210511128@dosen.upnvj.ac.id', '$2y$10$qHGJSIfZm0Q2f/ueBQeLjeT38rWf3F/H7LBWWBxMX8AQorb9ScjQe', 'dosen'),
+('2210511131', 'Dwikhi Deandra Purnianto', '2210511131@mahasiswa.upnvj.ac.id', '$2y$10$8E7j3RaOvCvqBlcT/BQVLeood5XAT4OXrR/CXSNR4TxH8D4zPmPrS', 'mahasiswa');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,18 @@ INSERT INTO `reservasi` (`id_reservasi`, `nim`, `id_ruangan`, `id_slot`, `tangga
 (1, '2210511131', 1, 49, '2024-06-21', 'Jumat'),
 (2, '2210511131', 1, 50, '2024-06-21', 'Jumat'),
 (3, '2210511131', 1, 51, '2024-06-21', 'Jumat'),
-(4, '2210511131', 1, 52, '2024-06-21', 'Jumat');
+(4, '2210511131', 1, 52, '2024-06-21', 'Jumat'),
+(5, '2210511131', 1, 53, '2024-06-21', 'Jumat'),
+(6, '2210511131', 1, 54, '2024-06-21', 'Jumat'),
+(7, '2210511131', 1, 55, '2024-06-21', 'Jumat'),
+(9, '2210511128', 1, 1, '2024-06-24', 'Senin'),
+(10, '2210511131', 1, 1, '2024-06-24', 'Senin'),
+(11, '2210511131', 1, 1, '2024-06-24', 'Senin'),
+(12, '2210511131', 1, 3, '2024-06-24', 'Senin'),
+(14, '2210511131', 1, 1, '2024-06-24', 'Senin'),
+(15, '2210511131', 1, 1, '2024-06-24', 'Senin'),
+(16, '2210511131', 1, 1, '2024-06-24', 'Senin'),
+(17, '2210511131', 1, 6, '2024-06-24', 'Senin');
 
 -- --------------------------------------------------------
 
@@ -133,12 +145,12 @@ CREATE TABLE `slot` (
 --
 
 INSERT INTO `slot` (`id_slot`, `hari`, `jam_mulai`, `jam_selesai`, `status`) VALUES
-(1, 'senin', '07:30:00', '08:30:00', 'tersedia'),
+(1, 'senin', '07:30:00', '08:30:00', 'penuh'),
 (2, 'senin', '08:30:00', '09:30:00', 'tersedia'),
 (3, 'senin', '09:30:00', '10:30:00', 'tersedia'),
 (4, 'senin', '10:30:00', '11:30:00', 'tersedia'),
 (5, 'senin', '11:30:00', '12:30:00', 'tersedia'),
-(6, 'senin', '12:30:00', '13:30:00', 'tersedia'),
+(6, 'senin', '12:30:00', '13:30:00', 'penuh'),
 (7, 'senin', '13:30:00', '14:30:00', 'tersedia'),
 (8, 'senin', '14:30:00', '15:30:00', 'tersedia'),
 (9, 'senin', '15:30:00', '16:30:00', 'tersedia'),
@@ -181,10 +193,10 @@ INSERT INTO `slot` (`id_slot`, `hari`, `jam_mulai`, `jam_selesai`, `status`) VAL
 (46, 'kamis', '16:30:00', '17:30:00', 'tersedia'),
 (47, 'kamis', '17:30:00', '18:30:00', 'tersedia'),
 (48, 'kamis', '18:30:00', '19:00:00', 'tersedia'),
-(49, 'jumat', '07:30:00', '08:30:00', 'penuh'),
-(50, 'jumat', '08:30:00', '09:30:00', 'penuh'),
-(51, 'jumat', '09:30:00', '10:30:00', 'penuh'),
-(52, 'jumat', '10:30:00', '11:30:00', 'penuh'),
+(49, 'jumat', '07:30:00', '08:30:00', 'tersedia'),
+(50, 'jumat', '08:30:00', '09:30:00', 'tersedia'),
+(51, 'jumat', '09:30:00', '10:30:00', 'tersedia'),
+(52, 'jumat', '10:30:00', '11:30:00', 'tersedia'),
 (53, 'jumat', '11:30:00', '12:30:00', 'tersedia'),
 (54, 'jumat', '12:30:00', '13:30:00', 'tersedia'),
 (55, 'jumat', '13:30:00', '14:30:00', 'tersedia'),
@@ -243,7 +255,7 @@ ALTER TABLE `slot`
 -- AUTO_INCREMENT for table `reservasi`
 --
 ALTER TABLE `reservasi`
-  MODIFY `id_reservasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_reservasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
