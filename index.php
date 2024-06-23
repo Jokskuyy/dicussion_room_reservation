@@ -331,8 +331,8 @@ include("koneksi.php");
                         <h2>Ruang Diskusi</h2>
                         <p>UPT Perpustakaan UPN Veteran Jakarta merupakan Unit Pelaksanaan Teknis di bidang perpustakaan yang mempunyai tugas melaksanakan pemberian layanan kepustakaan.</p>
                         <div class="social-media">
-                            <img src="img/instagram.jpg" alt="Instagram">
-                            <img src="img/facebook.jpg" alt="Facebook">
+                            <img src="img/instagram.png" alt="Instagram">
+                            <img src="img/facebook.png" alt="Facebook">
                             <img src="img/youtube.jpg" alt="YouTube">
                         </div>
                         <div class="contact-info">
@@ -351,9 +351,9 @@ include("koneksi.php");
                     </div>
                         <div class="address">
                             <h3>Alamat</h3>
-                            <p><img src="img/logolokasi.jpg" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
-                            <p><img src="img/telepon.jpg" alt="Phone"> 021 - 75902835</p>
-                            <p><img src="img/email.jpg" alt="Email"> library@upnvj.ac.id</p>
+                            <p><img src="img/logolokasi.png" alt="Location"> Kampus UPN “veteran” Jakarta Gedung DR. Soetomo Lt. 3 dan Lt. 4 Jl. R.S. Fatmawati Pondok Labu - Jakarta Selatan 12450</p>
+                            <p><img src="img/telepon.png" alt="Phone"> 021 - 75902835</p>
+                            <p><img src="img/email.png" alt="Email"> library@upnvj.ac.id</p>
                         </div>
                     </div>
                 </div>
