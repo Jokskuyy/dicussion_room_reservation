@@ -27,107 +27,12 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #339966;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .left-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        header .left-nav img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        header .left-nav .text-container {
-            display: inline-block;
-            margin-right: 20px;
-        }
-
-        header .left-nav .text-container span:first-child {
-            font-weight: bold;
-        }
-
-        header .left-nav .text-container span:last-child {
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            padding: 0;
-            margin: 0;
-        }
-
-        header nav ul li {
-            margin: 0 10px;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        header .right-nav img {
-            height: 40px;
-            width: auto;
-            cursor: pointer;
-        }
-
         .container {
             display: flex;
         }
 
-        .sidebar {
-            width: 200px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            height: 100vh;
-        }
-
-        .sidebar h2 {
-            margin-top: 0;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar ul li {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .sidebar ul li img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
-        }
-
-        .sidebar ul li a {
-            color: #333;
-            text-decoration: none;
-        }
 
         .content {
             flex: 1;
@@ -138,6 +43,7 @@ $result = mysqli_query($koneksi, $query);
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
+            width: 100%;
         }
 
         .history-section table {
@@ -154,17 +60,9 @@ $result = mysqli_query($koneksi, $query);
         .history-section th {
             background-color: #339966;
             color: white;
+            text-align: center;
         }
 
-        footer {
-            background: #339966;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
@@ -216,7 +114,7 @@ $result = mysqli_query($koneksi, $query);
                             echo "<td>" . $no++ . "</td>";
                             echo "<td>" . htmlspecialchars($row['nama_ruangan']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['jam_mulai']) . " - " . htmlspecialchars($row['jam_selesai']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                            echo "<td>" . date('d-m-Y', strtotime($row['tanggal'])) . "</td>";
                             echo "</tr>";
                         }
                         ?>

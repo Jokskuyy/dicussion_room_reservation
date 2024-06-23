@@ -57,6 +57,7 @@ $currentDate = $currentDateRow['tanggal'];
             padding: 20px;
             border: 1px solid #888;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         .modal-content {
@@ -109,6 +110,7 @@ $currentDate = $currentDateRow['tanggal'];
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            border-radius: 10px;
         }
 
         body {
