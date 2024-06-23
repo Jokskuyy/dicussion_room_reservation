@@ -23,7 +23,7 @@ if ($nim != '' && $password != '') {
             setcookie("message", "", time() - 60); // Hapus cookie message
             header("location: dashboard.php"); // Redirect ke halaman dashboard.php
             // Redirect berdasarkan status pengguna
-            if ($data['status'] == 'dosen') {
+            if ($data['status_akun'] == 'dosen') {
                 header("location: dashboard_dosen.php"); // Redirect ke halaman dashboard_dosen.php
             } else {
                 header("location: dashboard.php"); // Redirect ke halaman dashboard.php

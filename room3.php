@@ -57,6 +57,7 @@ $currentDate = $currentDateRow['tanggal'];
             padding: 20px;
             border: 1px solid #888;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         .modal-content {
@@ -87,10 +88,6 @@ $currentDate = $currentDateRow['tanggal'];
             flex-direction: column;
         }
 
-        .container {
-            display: flex;
-            flex: 1;
-        }
 
         .content {
             flex: 1;
@@ -109,35 +106,43 @@ $currentDate = $currentDateRow['tanggal'];
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            border-radius: 10px;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
         header {
             background: #339966;
             color: white;
-            padding: 1rem 1;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        .room-info img {
+            width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .room-detail img{
+            border-radius: 10px;
+        }
+
+        .detail-ruangannn img{
+            width: 18px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="left-nav">
-            <img src="img/imglogo.png" alt="Logo">
+            <img class="img" src="img/imglogo.png" alt="Logo">
             <div class="text-container">
                 <span>UPA Perpustakaan</span>
                 <span>UPN Veteran Jakarta</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="logout.php">Home</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
@@ -189,70 +194,93 @@ $currentDate = $currentDateRow['tanggal'];
             <div class="room-detail">
                 <h2>Ruang 3</h2>
                 <img src="img/contoh.jpg" alt="Ruang 3">
-                <p>Spesifikasi: Kapasitas 2 - 4 orang <img src="" alt="Icon Orang"></p>
-                <p>Maksimal peminjaman: 60 menit <img src="" alt="Icon Menit"></p>
-                <p>Lantai: 1 <img src="" alt="Icon Lantai"></p>
-                <a href="#" class="reserve-btn" data-toggle="modal" data-target="#reservationModal">Reservasi</a>
+                <p>Spesifikasi:</p>
+                <div class="detail-ruangannn">
+                    <p><img src="img/orang.png" alt="Icon Orang">   Kapasitas 2 - 4 orang</p>
+                    <p><img style="width: 20px;" src="img/menit.jpg" alt="Icon Menit">   Maksimal peminjaman: 60 menit</p>
+                    <p><img style="width: 15px;" src="img/logolokasi.png" alt="Icon Lantai">   Lantai: 1 </p>
+                    <a href="#" class="reserve-btn" data-toggle="modal" data-target="#reservationModal">Reservasi</a>
+                </div>
             </div>
         </main>
-    </div>
-    
+    </div>   
     <!-- Modal -->
     <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="reservationModalLabel">Ruang 3 Detail</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <table style="width:100%;">
+                        <tr>
+                            <td>
+                                <h2 class="modal-title" id="reservationModalLabel">Detail Ruang 3</h2>
+                            </td>
+                            <td>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="modal-body">
                     <div class="room-info">
-                        <img src="img/contoh.jpg" alt="Ruang 3">
-                        <h2>Ruang 3</h2>
-                        <div class="specification">
-                            <img src="orang.png" alt="Icon Orang">
-                            <p>2 - 4 orang</p>
-                        </div>
-                        <div class="specification">
-                            <img src="menit.png" alt="Icon Menit">
-                            <p>Maks. 60 Menit</p>
-                        </div>
-                        <div class="specification">
-                            <img src="info_lantai.png" alt="Icon Lantai">
-                            <p>Lantai 1</p>
-                        </div>
-                    </div>
-                    <div class="time-selection">
-                        <h3>Pilih Waktu</h3>
-                        <form action="reservation.php" method="POST">
-                            <div class="form-group">
-                                <label for="selected_time">Jam:</label>
-                                <select class="form-control" id="selected_time" name="selected_time" required>
-                                    <option>-- Pilih Jam --</option>
-                                    <?php
-                                    $status = 'tersedia';
-                                    $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
-                                    $resultTimes = mysqli_query($koneksi, $queryTimes);
-                                    
-                                    while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
-                                        echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <input type="hidden" name="room_id" value="3">
-                            <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
-                            <button type="submit" id="openModalBtn" class="btn btn-primary">Konfirmasi</button>
-                        </form>
+                        <img style="text-align:center;" src="img/contoh.jpg" alt="Ruang 3">
+                        <table style="margin-left:100px;margin-right:auto;width:80%;">
+                            <tr>
+                                <td>
+                                    <img style="width: 18px;" src="img/orang.png" alt="Icon Orang">
+                                </td>
+                                <td>
+                                    <p>2 - 4 orang</p>
+                                </td>
+                                <td rowspan="3">
+                                    <div class="time-selection">
+                                        <h3>Pilih Waktu</h3>
+                                        <form action="reservation.php" method="POST">
+                                            <div class="form-group">
+                                                <label for="selected_time">Jam:</label>
+                                                <select class="form-control" id="selected_time" name="selected_time" required>
+                                                    <option>-- Pilih Jam --</option>
+                                                    <?php
+                                                $status = 'tersedia';
+                                                $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
+                                                $resultTimes = mysqli_query($koneksi, $queryTimes);
+                                                
+                                                while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
+                                                    echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
+                                                }
+                                                ?>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="room_id" value="3">
+                                            <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
+                                            <button class="reserve-btn" type="submit" id="openModalBtn" class="btn btn-primary">Konfirmasi</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img style="width: 20px;" src="img/menit.jpg" alt="Icon Menit">
+                                </td>
+                                <td>
+                                    <p>Maks. 60 Menit</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img style="width: 15px;" src="img/logolokasi.png" alt="Icon Lantai">
+                                </td>
+                                <td>
+                                    <p>Lantai 1</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
     <footer>
         <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
     </footer>

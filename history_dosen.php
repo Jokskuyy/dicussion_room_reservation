@@ -12,11 +12,10 @@ $nim = $_SESSION['nim'];
 
 // Ambil data riwayat reservasi dari database
 $query = "
-    SELECT r.nama_ruangan, s.jam_mulai, s.jam_selesai, rs.tanggal
+    SELECT r.nama_ruangan, s.jam_mulai, s.jam_selesai, rs.tanggal, rs.nim
     FROM reservasi rs
     JOIN ruangan r ON rs.id_ruangan = r.id_ruangan
     JOIN slot s ON rs.id_slot = s.id_slot
-    WHERE rs.nim = '$nim'
     ORDER BY rs.tanggal DESC, s.jam_mulai DESC
 ";
 $result = mysqli_query($koneksi, $query);
@@ -26,13 +25,12 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Page</title>
+    <title>History Dosen</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         .container {
             display: flex;
         }
-
 
         .content {
             flex: 1;
@@ -75,22 +73,22 @@ $result = mysqli_query($koneksi, $query);
             </div>
             <nav>
                 <ul>
-                    <li><a href="logout.php">Home</a></li>
+                    <li><a href="dashboard_dosen.php">Home</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
         <div class="right-nav">
-            <a href="profile.php"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
+            <a href="profile_dosen.php"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
         </div>
     </header>
     <div class="container">
         <aside class="sidebar">
             <h2>Start</h2>
             <ul>
-                <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
-                <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile.php">Profile</a></li>
-                <li><img src="img/history_icon.png" alt="History Icon"><a href="history.php">History</a></li>
+                <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard_dosen.php">Dashboard</a></li>
+                <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile_dosen.php">Profile</a></li>
+                <li><img src="img/history_icon.png" alt="History Icon"><a href="history_dosen.php">History</a></li>
                 <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="logout.php">Logout</a></li>
             </ul>
         </aside>
@@ -104,6 +102,7 @@ $result = mysqli_query($koneksi, $query);
                             <th>Ruang</th>
                             <th>Waktu</th>
                             <th>Tanggal</th>
+                            <th>NIM</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,6 +114,7 @@ $result = mysqli_query($koneksi, $query);
                             echo "<td>" . htmlspecialchars($row['nama_ruangan']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['jam_mulai']) . " - " . htmlspecialchars($row['jam_selesai']) . "</td>";
                             echo "<td>" . date('d-m-Y', strtotime($row['tanggal'])) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['nim']) . "</td>";
                             echo "</tr>";
                         }
                         ?>

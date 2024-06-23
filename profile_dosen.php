@@ -1,11 +1,23 @@
 <?php
 include("koneksi.php");
 session_start();
+
+$nim = $_SESSION['nim'];
+
+$query = "SELECT nama, nim, email FROM akun WHERE nim = '$nim'";
+$result = mysqli_query($koneksi, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($koneksi));
+}
+
+$user = mysqli_fetch_assoc($result);
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+    <title>Profile Page</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -18,7 +30,7 @@ session_start();
             </div>
             <nav>
                 <ul>
-                    <li><a href="logout.php">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
@@ -38,26 +50,25 @@ session_start();
             </ul>
         </aside>
         <main class="content">
-            <a href="room1_dosen.php" class="card">
-                <img src="img/contoh.jpg" alt="Ruang 1">
-                <h3>Ruang 1</h3>
-            </a>            
-            <a href="room2_dosen.php" class="card">
-                <img src="img/contoh.jpg" alt="Ruang 2">
-                <h3>Ruang 2</h3>
-            </a>            
-            <a href="room3_dosen.php" class="card">
-                <img src="img/contoh.jpg" alt="Ruang 3">
-                <h3>Ruang 3</h3>
-            </a>            
-            <a href="room4_dosen.php" class="card">
-                <img src="img/contoh.jpg" alt="Ruang 4">
-                <h3>Ruang 4</h3>
-            </a>            
-            <a href="room5_dosen.php" class="card">
-                <img src="img/contoh.jpg" alt="Ruang 5">
-                <h3>Ruang 5</h3>
-            </a>            
+            <div class="profile-section">
+                <div class="profile-info">
+                    <img src="img/profile-image.jpg" alt="User Profile" class="profile-image">
+                    <div class="user-details">
+                        <h2><?php echo $user['nama']; ?></h2>
+                        <p><?php echo $user['nim']; ?></p>
+                        <p><?php echo $user['email']; ?></p>
+                    </div>
+                </div>
+                <div class="profile-content">
+                    <div class="box profile-box">
+                        <h3>Profile</h3>
+                        <p>Nama : <?php echo $user['nama']; ?></p>
+                        <p>NIM : <?php echo $user['nim']; ?></p>
+                        <p>Email : <?php echo $user['email']; ?></p>
+                        <p>Last Booking : 12 - 5 - 2024</p> <!-- Update this dynamically if needed -->
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     <footer>

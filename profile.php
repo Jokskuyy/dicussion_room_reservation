@@ -51,11 +51,8 @@ $user = mysqli_fetch_assoc($result);
         </aside>
         <main class="content">
             <div class="profile-section">
-                <div class="cover-photo">
-                    <img src="path/to/cover-image.png" alt="Cover Photo">
-                </div>
                 <div class="profile-info">
-                    <img src="path/to/profile-image.png" alt="User Profile" class="profile-image">
+                    <img src="img/profile-image.jpg" alt="User Profile" class="profile-image">
                     <div class="user-details">
                         <h2><?php echo $user['nama']; ?></h2>
                         <p><?php echo $user['nim']; ?></p>

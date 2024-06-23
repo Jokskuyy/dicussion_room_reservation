@@ -192,8 +192,8 @@ $currentDate = $currentDateRow['tanggal'];
                 </table>
             </div>
             <div class="room-detail">
-                <h2>Ruang 1</h2>
-                <img src="img/contoh.jpg" alt="Ruang 1">
+                <h2>Ruang 3</h2>
+                <img src="img/contoh.jpg" alt="Ruang 3">
                 <p>Spesifikasi:</p>
                 <div class="detail-ruangannn">
                     <p><img src="img/orang.png" alt="Icon Orang">   Kapasitas 2 - 4 orang</p>
@@ -212,7 +212,7 @@ $currentDate = $currentDateRow['tanggal'];
                     <table style="width:100%;">
                         <tr>
                             <td>
-                                <h2 class="modal-title" id="reservationModalLabel">Detail Ruang 1</h2>
+                                <h2 class="modal-title" id="reservationModalLabel">Detail Ruang 3</h2>
                             </td>
                             <td>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -224,7 +224,7 @@ $currentDate = $currentDateRow['tanggal'];
                 </div>
                 <div class="modal-body">
                     <div class="room-info">
-                        <img style="text-align:center;" src="img/contoh.jpg" alt="Ruang 1">
+                        <img style="text-align:center;" src="img/contoh.jpg" alt="Ruang 3">
                         <table style="margin-left:100px;margin-right:auto;width:80%;">
                             <tr>
                                 <td>
@@ -236,23 +236,27 @@ $currentDate = $currentDateRow['tanggal'];
                                 <td rowspan="3">
                                     <div class="time-selection">
                                         <h3>Pilih Waktu</h3>
-                                        <form action="reservation.php" method="POST">
+                                        <form action="reservation_dosen.php" method="POST">
                                             <div class="form-group">
                                                 <label for="selected_time">Jam:</label>
                                                 <select class="form-control" id="selected_time" name="selected_time" required>
                                                     <option>-- Pilih Jam --</option>
                                                     <?php
-                                                $status = 'tersedia';
-                                                $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
-                                                $resultTimes = mysqli_query($koneksi, $queryTimes);
-                                                
-                                                while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
-                                                    echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
-                                                }
-                                                ?>
+                                                        $status = 'tersedia';
+                                                        $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay' AND status = '$status'";
+                                                        $resultTimes = mysqli_query($koneksi, $queryTimes);
+                                                        
+                                                        while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
+                                                            echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
-                                            <input type="hidden" name="room_id" value="4">
+                                            <div class="form-group">
+                                                <label for="nim">NIM:</label>
+                                                <input type="text" class="form-control" id="nim" name="nim" required>
+                                            </div>
+                                            <input type="hidden" name="room_id" value="3">
                                             <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
                                             <button class="reserve-btn" type="submit" id="openModalBtn" class="btn btn-primary">Konfirmasi</button>
                                         </form>
@@ -281,6 +285,7 @@ $currentDate = $currentDateRow['tanggal'];
             </div>
         </div>
     </div>
+
     <footer>
         <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
     </footer>

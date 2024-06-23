@@ -274,14 +274,10 @@ footer {
 .room-info h2 {
     margin-top: 0;
 }
-.room-info img {
-    width: 50px;
-    height: auto;
-}
+
 .specification {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }
 .specification img {
     width: 20px;

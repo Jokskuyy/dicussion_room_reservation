@@ -236,23 +236,27 @@ $currentDate = $currentDateRow['tanggal'];
                                 <td rowspan="3">
                                     <div class="time-selection">
                                         <h3>Pilih Waktu</h3>
-                                        <form action="reservation.php" method="POST">
+                                        <form action="reservation_dosen.php" method="POST">
                                             <div class="form-group">
                                                 <label for="selected_time">Jam:</label>
                                                 <select class="form-control" id="selected_time" name="selected_time" required>
                                                     <option>-- Pilih Jam --</option>
                                                     <?php
-                                                $status = 'tersedia';
-                                                $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay'  AND status = '$status'";
-                                                $resultTimes = mysqli_query($koneksi, $queryTimes);
-                                                
-                                                while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
-                                                    echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
-                                                }
-                                                ?>
+                                                        $status = 'tersedia';
+                                                        $queryTimes = "SELECT jam_mulai, jam_selesai FROM slot WHERE hari = '$currentDay' AND status = '$status'";
+                                                        $resultTimes = mysqli_query($koneksi, $queryTimes);
+                                                        
+                                                        while ($timeRow = mysqli_fetch_assoc($resultTimes)) {
+                                                            echo "<option value='" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "'>" . $timeRow['jam_mulai'] . "-" . $timeRow['jam_selesai'] . "</option>";
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
-                                            <input type="hidden" name="room_id" value="4">
+                                            <div class="form-group">
+                                                <label for="nim">NIM:</label>
+                                                <input type="text" class="form-control" id="nim" name="nim" required>
+                                            </div>
+                                            <input type="hidden" name="room_id" value="1">
                                             <input type="hidden" name="date" value="<?php echo $currentDate; ?>">
                                             <button class="reserve-btn" type="submit" id="openModalBtn" class="btn btn-primary">Konfirmasi</button>
                                         </form>
@@ -281,6 +285,7 @@ $currentDate = $currentDateRow['tanggal'];
             </div>
         </div>
     </div>
+
     <footer>
         <p>Copyright &copy; 2024 UPN Veteran Jakarta.</p>
     </footer>
