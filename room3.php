@@ -703,7 +703,7 @@ $currentDate = $currentDateRow['tanggal'];
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="index.php">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -718,7 +718,7 @@ $currentDate = $currentDateRow['tanggal'];
                 <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
                 <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="">Profile</a></li>
                 <li><img src="img/history_icon.png" alt="History Icon"><a href="#">History</a></li>
-                <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="index.php">Logout</a></li>
+                <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="logout.php">Logout</a></li>
             </ul>
         </aside>
         <main class="content">

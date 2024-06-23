@@ -2,11 +2,6 @@
 include("koneksi.php");
 session_start();
 
-if (!isset($_SESSION['nim'])) {
-    header("Location: index.php");
-    exit();
-}
-
 $nim = $_SESSION['nim'];
 
 $query = "SELECT nama, nim, email FROM akun WHERE nim = '$nim'";
@@ -22,8 +17,6 @@ $user = mysqli_fetch_assoc($result);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <style>
         body {
@@ -221,12 +214,12 @@ $user = mysqli_fetch_assoc($result);
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="index.php">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
         <div class="right-nav">
-            <a href="#"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
+            <a href="profile.php"><img src="img/profile_photo.png" alt="Profile" class="profile"></a>
         </div>
     </header>
     <div class="container">
@@ -236,7 +229,7 @@ $user = mysqli_fetch_assoc($result);
                 <li><img src="img/dashboard_icon.png" alt="Dashboard Icon"><a href="dashboard.php">Dashboard</a></li>
                 <li><img src="img/profile_icon.png" alt="Profile Icon"><a href="profile.php">Profile</a></li>
                 <li><img src="img/history_icon.png" alt="History Icon"><a href="history.php">History</a></li>
-                <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="index.php">Logout</a></li>
+                <li><img src="img/logout_icon.png" alt="Logout Icon"><a href="logout.php">Logout</a></li>
             </ul>
         </aside>
         <main class="content">
