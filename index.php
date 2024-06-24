@@ -321,7 +321,7 @@ include("update_slot_status.php");
             <div class="full-width-image">
                 <img src="img/contoh.jpg" alt="contoh">
                 <div class="hero-text">
-                    <h2>Reservasi Sekarang >>></h2>
+                    <a href="#loginModal" class="btn btn-primary btn-reservasi" id="reservasiSekarang">Reservasi Sekarang</a>
                 </div>
             </div>
         </section>
