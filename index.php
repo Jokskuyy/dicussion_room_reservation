@@ -295,24 +295,6 @@ include("update_slot_status.php");
             cursor: pointer;
         }
 
-        /* New styles for the interactive button */
-        .hero-text .btn-reservasi {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-text .btn-reservasi:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
@@ -439,19 +421,20 @@ include("update_slot_status.php");
     </div>
 
     <script>
+        var reservasiSekarang = document.querySelector('.hero-text h2');
+
+        reservasiSekarang.onclick = function() {
+            loginModal.style.display = 'block';
+        }
+
         var loginModal = document.getElementById('loginModal');
         var registerModal = document.getElementById('registerModal');
 
-        var reservasiSekarang = document.getElementById('reservasiSekarang');
         var loginBtn = document.getElementById('loginBtn');
         var registerBtn = document.getElementById('registerBtn');
 
         var closeLogin = document.getElementById('closeLogin');
         var closeRegister = document.getElementById('closeRegister');
-
-        reservasiSekarang.onclick = function() {
-            loginModal.style.display = 'block';
-        }
 
         loginBtn.onclick = function() {
             loginModal.style.display = 'block';
