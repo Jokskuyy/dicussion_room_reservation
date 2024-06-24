@@ -296,3 +296,21 @@ footer {
     margin-top: 20px;
 }
 /*akhir modal reservasi*/
+
+.hero-text .btn-reservasi {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text .btn-reservasi:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
