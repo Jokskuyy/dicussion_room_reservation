@@ -254,3 +254,61 @@ form .form-group button {
 form .form-group button:hover {
     background-color: #267347;
 }
+
+.hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.hero .section-title p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.hero .section-title h2 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.hero .section-title hr {
+    width: 50%;
+    border: 1px solid white;
+    margin: 10px auto;
+}
+
+.hero .reservation-button {
+    font-size: 1.2rem;
+    color: white;
+    background-color: transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    border-radius: 0;
+    transition: background 0.3s;
+}
+
+.hero .reservation-button:hover {
+    background-color: transparent;
+}
+
+.hero-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hero-link:hover {
+    text-decoration: none;
+    color: inherit;
+}

@@ -28,18 +28,20 @@
     </header>
     <main>
         <section class="hero" id="home">
-        <div class="full-width-image">
-            <img src="img/contoh.jpg" alt="contoh">
-            <div class="overlay"></div> <!-- Overlay div if applied -->
-            <div class="hero-text">
-                <div class="section-title">
-                    <p>UPA Perpustakaan</p>
-                    <h2>Ruang Diskusi</h2>
-                    <hr>
+            <div class="full-width-image">
+                <img src="img/contoh.jpg" alt="contoh">
+                <div class="overlay"></div> <!-- Overlay div if applied -->
+                <div class="hero-text">
+                    <div class="section-title">
+                        <a href="#reservasi" class="hero-link">
+                            <p>UPT Perpustakaan</p>
+                            <h2>Ruang Diskusi</h2>
+                        </a>
+                        <hr>
+                    </div>
+                    <h2 class="reservation-button">Reservation Now >>></h2>
                 </div>
-                <h2 class="reservation-button">Reservasi Sekarang</h2>
             </div>
-        </div>
         </section>
         <section class="content" id="help">
             <div class="container">
