@@ -4,6 +4,7 @@ session_start();
 
 $nim = $_SESSION['nim'];
 
+// Query untuk mendapatkan data user
 $query = "SELECT nama, nim, email FROM akun WHERE nim = '$nim'";
 $result = mysqli_query($koneksi, $query);
 
@@ -12,6 +13,16 @@ if (!$result) {
 }
 
 $user = mysqli_fetch_assoc($result);
+
+// Query untuk mendapatkan last booking
+$query_last_booking = "SELECT tanggal FROM reservasi WHERE nim = '$nim' ORDER BY tanggal DESC LIMIT 1";
+$result_last_booking = mysqli_query($koneksi, $query_last_booking);
+
+if (!$result_last_booking) {
+    die("Query failed: " . mysqli_error($koneksi));
+}
+
+$last_booking = mysqli_fetch_assoc($result_last_booking);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +76,7 @@ $user = mysqli_fetch_assoc($result);
                         <p>Nama : <?php echo $user['nama']; ?></p>
                         <p>NIM : <?php echo $user['nim']; ?></p>
                         <p>Email : <?php echo $user['email']; ?></p>
-                        <p>Last Booking : 12 - 5 - 2024</p> <!-- Update this dynamically if needed -->
+                        <p>Last Booking : <?php echo isset($last_booking['tanggal']) ? date('d - m - Y', strtotime($last_booking['tanggal'])) : 'No bookings yet'; ?></p>
                     </div>
                 </div>
             </div>
