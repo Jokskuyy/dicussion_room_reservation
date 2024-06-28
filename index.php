@@ -34,7 +34,7 @@
                 <div class="hero-text">
                     <div class="section-title">
                         <a href="#reservasi" class="hero-link">
-                            <p>UPT Perpustakaan</p>
+                            <p>UPA Perpustakaan</p>
                             <h2>Ruang Diskusi</h2>
                         </a>
                         <hr>
